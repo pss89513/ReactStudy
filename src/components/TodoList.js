@@ -4,10 +4,10 @@ class TodoList extends Component {
     constructor(props){
         super(props);
         this.state = {
-            data:[
-                {name:"김철수"},
-                {name:"김또치"},
-                {name:"김영희"}
+            todoList:[
+                {todo:"공부"},
+                {todo:"운동(?)"},
+                {todo:"일"}
             ]
         }
     }
@@ -16,12 +16,12 @@ class TodoList extends Component {
         const mapToComponents = (data) => {
             return data.map((ele, idx) => {
                 console.log(ele);
-                return(<Todo name={ele.name} key={idx}/>)
+                return(<Todo todo={ele.todo} key={idx}/>)
             });
         }
         return (
             <div>
-                {mapToComponents(this.state.data)}
+                {mapToComponents(this.state.todoList)}
             </div>
         )
     }

@@ -15,10 +15,16 @@ class Todo extends Component {
     }
 
     render () {
-        const doneStyle = {backgroundColor: 'green'};
+        const doneStyle = {
+            textDecoration: 'line-through',
+            fontStyle: 'italic'
+        };
+
         return (
             <ul>
-                <li style={this.state.isDone ? doneStyle : null} onClick={this.handleClick}>{this.props.name}</li>
+                <li onClick={this.handleClick}>
+                    <p style={this.state.isDone ? doneStyle : null} >{this.props.todo}</p>
+                </li>
             </ul>
         )
     }
