@@ -14,13 +14,16 @@ class TodoCreate extends Component {
     }
     onCreate() {
         this.props.onCreate({todo:this.state.todo});
+        this.setState({
+            todo:''
+        });
     }
     render() {
         return (
             <div>
                 <p>
                     <input type="text" name="newTodo" value={this.state.todo} onChange={this.handleChange}/>
-                    <button type="button" onClick={this.onCreate}>추가</button>
+                    <button type="button" onClick={this.onCreate}>Todo 추가</button>
                 </p>
             </div>
         );

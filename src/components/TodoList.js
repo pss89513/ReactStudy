@@ -9,7 +9,7 @@ class TodoList extends Component {
             todoList:[
                 {todo:"공부"},
                 {todo:"운동(?)"},
-                {todo:"일"}
+                {todo:"양파즙먹기"}
             ]
         }
         this.handleCreate = this.handleCreate.bind(this);
@@ -25,7 +25,6 @@ class TodoList extends Component {
     render () {        
         const mapToComponents = (data) => {
             return data.map((ele, idx) => {
-                console.log(ele);
                 return(<Todo todo={ele.todo} key={idx} idx={idx}/>)
             });
         }

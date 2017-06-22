@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import TodoList from './components/TodoList';
 class App extends Component {
   render() {

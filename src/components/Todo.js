@@ -7,7 +7,6 @@ class Todo extends Component {
         this.state = {
             isDone : false
         }
-        console.log(props);
     }
 
     handleClick(){
