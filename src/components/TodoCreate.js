@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createTodo } from '../actions/TodoActions';
 
 class TodoCreate extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            todo:''
+            newTodo:''
         }
         this.handleChange = this.handleChange.bind(this);
         this.onCreate = this.onCreate.bind(this);
     }
     handleChange(e) {
-        this.setState({todo:e.target.value});
+        this.setState({newTodo:e.target.value});
     }
     onCreate() {
-        this.props.onCreate(this.state.todo);
+        this.props.createTodo(this.state.newTodo);
         this.setState({
-            todo:''
+            newTodo:''
         });
     }
     render() {
@@ -30,4 +32,12 @@ class TodoCreate extends Component {
     }
 }
 
-export default TodoCreate;
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        createTodo: (newTodo) => {
+            dispatch(createTodo(newTodo));
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(TodoCreate);

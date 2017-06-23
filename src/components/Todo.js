@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {checkTodo} from '../actions/TodoActions'
 
 class Todo extends Component {
     constructor(props) {
@@ -10,7 +12,7 @@ class Todo extends Component {
     }
 
     handleClick() {
-        this.props.onClick(this.props.idx);
+        this.props.checkTodo(this.props.idx);
     }
 
     render() {
@@ -29,4 +31,12 @@ class Todo extends Component {
     }
 }
 
-export default Todo
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        checkTodo: (idx) => {
+            dispatch(checkTodo(idx));
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Todo);
