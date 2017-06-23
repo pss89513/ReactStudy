@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 
 class Todo extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.state = {
-            isDone : false
+            isDone: false
         }
     }
 
-    handleClick(){
-        this.setState({isDone : !this.state.isDone})
+    handleClick() {
+        this.props.onClick(this.props.idx);
     }
 
-    render () {
+    render() {
         const doneStyle = {
             textDecoration: 'line-through',
             fontStyle: 'italic'
@@ -22,7 +22,7 @@ class Todo extends Component {
         return (
             <ul>
                 <li onClick={this.handleClick}>
-                    <p style={this.state.isDone ? doneStyle : null} >{this.props.todo}</p>
+                    <p style={this.props.isDone ? doneStyle : null} >{this.props.todo}</p>
                 </li>
             </ul>
         )
