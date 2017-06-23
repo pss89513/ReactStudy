@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {checkTodo} from '../actions/TodoActions'
+import { checkTodo } from '../actions/TodoActions'
 
 class Todo extends Component {
     constructor(props) {
@@ -8,7 +8,7 @@ class Todo extends Component {
         this.handleClick = this.handleClick.bind(this);
         this.state = {
             isDone: false
-        }
+        };
     }
 
     handleClick() {
