@@ -13,7 +13,7 @@ class TodoCreate extends Component {
         this.setState({todo:e.target.value});
     }
     onCreate() {
-        this.props.onCreate({todo:this.state.todo});
+        this.props.onCreate(this.state.todo);
         this.setState({
             todo:''
         });

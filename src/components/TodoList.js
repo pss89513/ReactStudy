@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import Todo from './Todo';
-// import TodoCreate from './TodoCreate';
+import TodoCreate from './TodoCreate';
 import { connect } from 'react-redux';
-import { checkTodo } from '../actions/TodoActions';
+import { checkTodo, createTodo } from '../actions/TodoActions';
 
 class TodoList extends Component {
     constructor(props) {
         super(props);
-        // this.handleCreate = this.handleCreate.bind(this);
+        this.handleCreate = this.handleCreate.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
     handleCreate(newTodo) {
-
+        this.props.createTodo(newTodo);
     }
 
     handleClick(idx) {
-        this.props.checkTodo(idx)
+        this.props.checkTodo(idx);
     }
 
     render() {
@@ -35,7 +35,7 @@ class TodoList extends Component {
         return (
             <div>
                 <div>
-                    {/*<TodoCreate onCreate={this.handleCreate} />*/}
+                    <TodoCreate onCreate={this.handleCreate} />
                 </div>
                 <div>
                     {mapToComponents(this.props.todoList)}
@@ -46,7 +46,6 @@ class TodoList extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state.todo.get('todoList').toJS());
     return {
         todoList: state.todo.get('todoList').toJS()
     }
@@ -55,6 +54,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         checkTodo: (idx) => {
             dispatch(checkTodo(idx));
+        },
+        createTodo: (newTodo) => {
+            dispatch(createTodo(newTodo));
         }
     }
 }
